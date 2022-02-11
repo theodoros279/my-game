@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5147697806936418643}
   - component: {fileID: 6334168645808922510}
   - component: {fileID: -6663019005858575346}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,3 +144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908b6a7b2394f4595b67736f853fd45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: c92e8fa7c5f514e0cb4f6843f81c3296, type: 3}
+  - {fileID: 21300000, guid: 829e40b73c1b84894a03985f8f6fc274, type: 3}
+  - {fileID: 21300000, guid: 085e605834db04a8eadd673845d5d0c2, type: 3}
+  size: 1
+  minSize: 0.4
+  maxSize: 1
+  speed: 5
+  maxLifetime: 30
