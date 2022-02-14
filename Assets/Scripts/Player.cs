@@ -55,4 +55,17 @@ public class Player : MonoBehaviour
         Bullet bullet = Instantiate(this.bulletPrefab, this.transform.position, this.transform.rotation);
         bullet.Project(this.transform.up);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision) 
+    {
+        if (collision.gameObject.tag == "Asteroid") {
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.angularVelocity = 0.0f;
+
+            this.gameObject.SetActive(false);  
+
+            FindObjectOfType<GameManager>().PlayerDied();
+        }
+    }
+
 }
