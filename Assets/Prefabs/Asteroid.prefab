@@ -151,5 +151,5 @@ MonoBehaviour:
   size: 1
   minSize: 0.4
   maxSize: 1
-  speed: 5
+  speed: 4
   maxLifetime: 30
