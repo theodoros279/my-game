@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public float respawnTime = 3.0f;
 
     public int score = 0; 
-    public Text scoreText;
+    public Text scoreText; 
 
     private void Start()
     {
@@ -90,7 +90,12 @@ public class GameManager : MonoBehaviour
     private void SetScore(int score)
     {
         this.score = score;
-        scoreText.text = "Score: " + score.ToString();  
+        scoreText.text = "Score: " + score.ToString(); 
+        PlayerPrefs.SetInt("Score", score);  
+
+        if (score > PlayerPrefs.GetInt("HighScore")) {
+            PlayerPrefs.SetInt("HighScore", score);  
+        } 
     }
 
     private void SetLives(int lives)
