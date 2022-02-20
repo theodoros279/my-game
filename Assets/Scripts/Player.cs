@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
     public Bullet bulletPrefab;
 
-    public float playerSpeed = 1.0f;
-    public float turnSpeed = 1.0f;
+    public float playerSpeed = 1.2f;
+    public float turnSpeed = 0.3f; 
 
     private Rigidbody2D rigidbody;
     private bool thrusting;
