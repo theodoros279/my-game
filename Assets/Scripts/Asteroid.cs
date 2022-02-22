@@ -32,7 +32,7 @@ public class Asteroid : MonoBehaviour
     {
         rigidbody.AddForce(direction * speed); 
         Destroy(this.gameObject, maxLifetime);
-    }
+    }   
 
     private void OnCollisionEnter2D(Collision2D collision) 
     {

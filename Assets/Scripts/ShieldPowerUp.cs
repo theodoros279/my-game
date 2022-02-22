@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class ShieldPowerUp : MonoBehaviour
 {
-    public Player player;
+    
     public float duration = 4.0f; 
+    private Rigidbody2D rigidbody;
+    public float speed = 3.0f; 
+    public float maxLifetime = 30.0f; 
 
     void OnTriggerEnter2D (Collider2D other) 
     {
         if (other.gameObject.tag == "Player") {
-            StartCoroutine (Pickup()); 
+            StartCoroutine (Pickup());  
         } 
     }
 
+    private void Awake() 
+    {
+        rigidbody = GetComponent<Rigidbody2D>();
+    } 
+ 
     IEnumerator Pickup() 
     {
         // Set to ignore asteroids layer
-        this.player.gameObject.layer = LayerMask.NameToLayer("Ignore Asteroids");
+        GameObject player = GameObject.FindWithTag("Player"); 
+        player.gameObject.layer = LayerMask.NameToLayer("Ignore Asteroids"); 
 
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = false; 
@@ -26,7 +35,13 @@ public class ShieldPowerUp : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         // Change back to player layer 
-        this.player.gameObject.layer = LayerMask.NameToLayer("Player");  
-        Destroy(this.gameObject); 
+        player.gameObject.layer = LayerMask.NameToLayer("Player");  
+        Destroy(this.gameObject);  
     }
+
+    public void SetTrojectory(Vector2 direction) 
+    {
+        rigidbody.AddForce(direction * speed); 
+        Destroy(this.gameObject, maxLifetime);
+    }  
 }

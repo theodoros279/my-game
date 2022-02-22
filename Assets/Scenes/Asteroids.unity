@@ -479,6 +479,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad87b75ce3dde4f0e9a2148e3281fb66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldPrefab: {fileID: 3882024172744222049, guid: 9832b7d7ec2cd4670a7fbac55ccd97fe, type: 3}
+  stopSpawning: 0
+  spawnDistance: 15
+  trajectoryVariance: 3
 --- !u!4 &564229369
 Transform:
   m_ObjectHideFlags: 0
