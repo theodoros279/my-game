@@ -75,11 +75,13 @@ public class GameManager : MonoBehaviour
         this.player.transform.position = Vector3.zero;
         this.player.gameObject.layer = LayerMask.NameToLayer("Ignore Asteroids"); 
         this.player.gameObject.SetActive(true); 
+        this.player.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0.5f);     
         Invoke(nameof(TurnOnCollisions), this.respawnTime);  
     }
 
     private void TurnOnCollisions() {
         this.player.gameObject.layer = LayerMask.NameToLayer("Player");
+        this.player.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1); 
     }
 
     public void GameOver()

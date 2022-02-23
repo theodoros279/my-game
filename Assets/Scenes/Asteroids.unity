@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: -4821356748074763713, guid: 7ddd25b725b2e4f63a8a2514c4ab489e, type: 3}
   playerSpeed: 1.2
-  turnSpeed: 0.3
+  turnSpeed: 0.25
 --- !u!61 &52760053
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -480,7 +480,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldPrefab: {fileID: 3882024172744222049, guid: 9832b7d7ec2cd4670a7fbac55ccd97fe, type: 3}
-  stopSpawning: 0
+  extraLifePrefab: {fileID: -6241577765998784804, guid: cbffa0e46d2854948969d0acfefa389b, type: 3}
+  fastPrefab: {fileID: 3724236444683286013, guid: d1a35a2ef17c04da898e6122ef936734, type: 3}
   spawnDistance: 15
   trajectoryVariance: 3
 --- !u!4 &564229369
@@ -854,7 +855,7 @@ GameObject:
   - component: {fileID: 1534025861}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

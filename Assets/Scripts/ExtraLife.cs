@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldPowerUp : MonoBehaviour
+public class ExtraLife : MonoBehaviour
 {
     
     public float duration = 6.0f; 
@@ -22,27 +22,18 @@ public class ShieldPowerUp : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
     } 
  
-    IEnumerator Pickup() 
+    IEnumerator Pickup()  
     {
-        // Set to ignore asteroids layer
-        GameObject player = GameObject.FindWithTag("Player"); 
-        player.gameObject.layer = LayerMask.NameToLayer("Ignore Asteroids"); 
-
-        // change the color of player
-        player.GetComponent<SpriteRenderer>().color = new Color(23, 255, 0);  
+        GameManager getManager = FindObjectOfType<GameManager>(); 
+        getManager.lives += 1;   
+        getManager.livesText.text = "Lives: " + getManager.lives.ToString();    
 
         GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<CircleCollider2D>().enabled = false; 
+        GetComponent<CircleCollider2D>().enabled = false;  
 
         // Duration of power up
         yield return new WaitForSeconds(duration);  
 
-        // reset the color of player 
-        player.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);   
-
-
-        // Change back to player layer 
-        player.gameObject.layer = LayerMask.NameToLayer("Player");  
         Destroy(this.gameObject);  
     }
 

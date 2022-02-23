@@ -5,27 +5,51 @@ using UnityEngine;
 public class PowerUpSpawner : MonoBehaviour
 {
     public ShieldPowerUp shieldPrefab;
-    public bool stopSpawning = false;
-    private float spawnTime;
-    private float spawnDelay;    
+    public ExtraLife extraLifePrefab; 
+    public FastPowerUp fastPrefab;    
     public float spawnDistance = 15.0f;
     public float trajectoryVariance = 3.0f; 
 
     void Start()
     {
-        spawnTime = Random.Range(10.0f, 30.0f); 
-        InvokeRepeating(nameof(Spawn), spawnTime, spawnTime);  
+        InvokeRepeating(nameof(SpawnShield), 19.0f, 19.0f);    
+        InvokeRepeating(nameof(SpawnExtraLife), 25.0f, 25.0f); 
+        InvokeRepeating(nameof(SpawnFast), 31.0f, 31.0f);          
     } 
 
-    private void Spawn()  
+    private void SpawnShield()  
     {
-            Vector3 spawnDirection = Random.insideUnitCircle.normalized * this.spawnDistance;
-            Vector3 spawnPoint = this.transform.position + spawnDirection; 
+        Vector3 spawnDirection = Random.insideUnitCircle.normalized * this.spawnDistance;
+        Vector3 spawnPoint = this.transform.position + spawnDirection; 
 
-            float variance = Random.Range(-this.trajectoryVariance, -this.trajectoryVariance);
-            Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward); 
+        float variance = Random.Range(-this.trajectoryVariance, -this.trajectoryVariance);
+        Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward); 
 
-            ShieldPowerUp shield = Instantiate(this.shieldPrefab, spawnPoint, rotation);
-            shield.SetTrojectory(rotation * -spawnDirection);     
+        ShieldPowerUp shield = Instantiate(this.shieldPrefab, spawnPoint, rotation);
+        shield.SetTrojectory(rotation * -spawnDirection);          
+    }
+
+    private void SpawnExtraLife()
+    { 
+        Vector3 spawnDirection = Random.insideUnitCircle.normalized * this.spawnDistance;
+        Vector3 spawnPoint = this.transform.position + spawnDirection; 
+
+        float variance = Random.Range(-this.trajectoryVariance, -this.trajectoryVariance);
+        Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward); 
+
+        ExtraLife life = Instantiate(this.extraLifePrefab, spawnPoint, rotation);
+        life.SetTrojectory(rotation * -spawnDirection); 
+    }
+
+    private void SpawnFast()
+    { 
+        Vector3 spawnDirection = Random.insideUnitCircle.normalized * this.spawnDistance;
+        Vector3 spawnPoint = this.transform.position + spawnDirection; 
+
+        float variance = Random.Range(-this.trajectoryVariance, -this.trajectoryVariance);
+        Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward); 
+
+        FastPowerUp fast = Instantiate(this.fastPrefab, spawnPoint, rotation);
+        fast.SetTrojectory(rotation * -spawnDirection);  
     }
 }
