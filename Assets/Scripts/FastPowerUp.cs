@@ -9,7 +9,6 @@ public class FastPowerUp : MonoBehaviour
     private Rigidbody2D rigidbody;
     public float speed = 3.0f; 
     public float maxLifetime = 30.0f; 
-    // public Player player; 
 
     void OnTriggerEnter2D (Collider2D other) 
     {

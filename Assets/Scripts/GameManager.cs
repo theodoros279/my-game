@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public int score = 0; 
     public Text scoreText; 
 
+    private int points = 1500;
+    private int targetScore = 1000; 
+
     private void Start()
     {
         NewGame();
@@ -25,6 +28,32 @@ public class GameManager : MonoBehaviour
         if (lives <= 0 && Input.GetKeyDown(KeyCode.Return)) { 
             NewGame();
         }
+
+        Achievements();    
+        ExtraFeature(); 
+    }
+
+    private void Achievements()   
+    {  
+        for (int i = 0; i < 100; i++) {
+            if (score >= points) {
+                Debug.Log("Congrats you have unlocked an achievement, You scored " + points + " points"); 
+                points += points;   
+            }
+        }
+    }
+
+    private void ExtraFeature()
+    {
+        AsteroidSpawner spawner = FindObjectOfType<AsteroidSpawner>();
+        
+        for (int i = 0; i < 100; i++) {
+            if (score >= targetScore) { 
+                spawner.IncreaseSpawnAmount();
+                Debug.Log("amount increased"); 
+                targetScore += targetScore;   
+            } 
+        } 
     }
 
     public void NewGame()
@@ -84,7 +113,7 @@ public class GameManager : MonoBehaviour
         this.player.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1); 
     }
 
-    public void GameOver()
+    private void GameOver()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
     }
@@ -97,7 +126,7 @@ public class GameManager : MonoBehaviour
 
         if (score > PlayerPrefs.GetInt("HighScore")) {
             PlayerPrefs.SetInt("HighScore", score);  
-        } 
+        }  
     }
 
     private void SetLives(int lives)

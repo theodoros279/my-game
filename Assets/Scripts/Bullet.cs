@@ -15,7 +15,6 @@ public class Bullet : MonoBehaviour
 
     public void Project(Vector2 direction) {
         rigidbody.AddForce(direction * this.bulletSpeed); 
-
         Destroy(this.gameObject, this.maxLifeTime);
     }
 

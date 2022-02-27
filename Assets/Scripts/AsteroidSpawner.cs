@@ -29,4 +29,9 @@ public class AsteroidSpawner : MonoBehaviour
             asteroid.SetTrojectory(rotation * -spawnDirection);
         }
     }
+
+    public void IncreaseSpawnAmount() 
+    {
+        this.spawnAmount += 1;
+    }
 }
