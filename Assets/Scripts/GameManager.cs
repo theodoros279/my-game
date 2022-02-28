@@ -92,11 +92,7 @@ public class GameManager : MonoBehaviour
 
         SetLives(lives - 1);
 
-        if (this.lives <= 0) {
-            GameOver();
-        } else {
-            Invoke(nameof(Respawn), this.respawnTime);
-        }
+        Invoke(nameof(Respawn), this.respawnTime);
     }
 
     private void Respawn() 
@@ -129,9 +125,13 @@ public class GameManager : MonoBehaviour
         }  
     }
 
-    private void SetLives(int lives)
+    public void SetLives(int lives)
     {
         this.lives = lives;
         livesText.text = "Lives: " + lives.ToString(); 
+
+        if (this.lives == 0) {
+            GameOver(); 
+        }
     }
 }

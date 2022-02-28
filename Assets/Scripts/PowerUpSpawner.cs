@@ -7,6 +7,7 @@ public class PowerUpSpawner : MonoBehaviour
     public ShieldPowerUp shieldPrefab;
     public ExtraLife extraLifePrefab; 
     public FastPowerUp fastPrefab;    
+    public LoseLife loseLifePrefab;
     public float spawnDistance = 15.0f;
     public float trajectoryVariance = 3.0f; 
 
@@ -14,7 +15,8 @@ public class PowerUpSpawner : MonoBehaviour
     {
         InvokeRepeating(nameof(SpawnShield), 19.0f, 19.0f);    
         InvokeRepeating(nameof(SpawnExtraLife), 25.0f, 25.0f); 
-        InvokeRepeating(nameof(SpawnFast), 31.0f, 31.0f);          
+        InvokeRepeating(nameof(SpawnFast), 31.0f, 31.0f); 
+        InvokeRepeating(nameof(SpawnPowerDown), 27.0f, 27.0f);            
     } 
 
     private void SpawnShield()  
@@ -51,5 +53,17 @@ public class PowerUpSpawner : MonoBehaviour
 
         FastPowerUp fast = Instantiate(this.fastPrefab, spawnPoint, rotation);
         fast.SetTrojectory(rotation * -spawnDirection);  
+    }
+
+    private void SpawnPowerDown() 
+    {
+        Vector3 spawnDirection = Random.insideUnitCircle.normalized * this.spawnDistance;
+        Vector3 spawnPoint = this.transform.position + spawnDirection; 
+
+        float variance = Random.Range(-this.trajectoryVariance, -this.trajectoryVariance);
+        Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward); 
+
+        LoseLife loseLife = Instantiate(this.loseLifePrefab, spawnPoint, rotation);
+        loseLife.SetTrojectory(rotation * -spawnDirection);
     }
 }

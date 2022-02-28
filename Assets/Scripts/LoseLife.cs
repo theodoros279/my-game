@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExtraLife : MonoBehaviour
+public class LoseLife : MonoBehaviour
 {
     public float duration = 6.0f; 
     private Rigidbody2D rigidbody;
@@ -24,7 +24,7 @@ public class ExtraLife : MonoBehaviour
     IEnumerator Pickup()  
     {
         GameManager getManager = FindObjectOfType<GameManager>(); 
-        getManager.SetLives(getManager.lives + 1);     
+        getManager.SetLives(getManager.lives - 1);  
         getManager.livesText.text = "Lives: " + getManager.lives.ToString();     
 
         GetComponent<SpriteRenderer>().enabled = false;

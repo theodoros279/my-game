@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 564229369}
   - component: {fileID: 564229368}
   m_Layer: 0
-  m_Name: PowerUpSpawner
+  m_Name: PowerUp/DownSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,6 +482,7 @@ MonoBehaviour:
   shieldPrefab: {fileID: 3882024172744222049, guid: 9832b7d7ec2cd4670a7fbac55ccd97fe, type: 3}
   extraLifePrefab: {fileID: -6241577765998784804, guid: cbffa0e46d2854948969d0acfefa389b, type: 3}
   fastPrefab: {fileID: 3724236444683286013, guid: d1a35a2ef17c04da898e6122ef936734, type: 3}
+  loseLifePrefab: {fileID: 7146749414104344243, guid: c9751b21272144852aff262387e91a75, type: 3}
   spawnDistance: 15
   trajectoryVariance: 3
 --- !u!4 &564229369
