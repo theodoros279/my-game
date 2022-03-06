@@ -13,7 +13,7 @@ public class ShieldPowerUp : MonoBehaviour
     void OnTriggerEnter2D (Collider2D other) 
     {
         if (other.gameObject.tag == "Player") {
-            StartCoroutine (Pickup());  
+            StartCoroutine(Pickup());  
         } 
     }
 
@@ -44,7 +44,7 @@ public class ShieldPowerUp : MonoBehaviour
         // Change back to player layer 
         player.gameObject.layer = LayerMask.NameToLayer("Player");  
         Destroy(this.gameObject);  
-    }
+    } 
 
     public void SetTrojectory(Vector2 direction) 
     {
