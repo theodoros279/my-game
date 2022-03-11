@@ -28,10 +28,10 @@ public class GameManager : MonoBehaviour
             NewGame();
         }
 
-        ExtraFeature(); 
+        IncreaseDifficulty();  
     }
 
-    private void ExtraFeature()
+    private void IncreaseDifficulty()
     {
         AsteroidSpawner spawner = FindObjectOfType<AsteroidSpawner>();
         

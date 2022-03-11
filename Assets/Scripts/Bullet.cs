@@ -5,8 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rigidbody;
-    public float bulletSpeed = 500.0f;
-    public float maxLifeTime = 10.0f;
+    private float bulletSpeed = 500.0f;
+    private float maxLifeTime = 10.0f;
 
     private void Awake() 
     {

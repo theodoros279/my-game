@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IEntity
 {
     public Bullet bulletPrefab;
 
@@ -10,17 +10,20 @@ public class Player : MonoBehaviour
     public float turnSpeed = 0.3f; 
 
     private Rigidbody2D rigidbody;
-    private bool thrusting;
-    private float turnDirection;
+    private bool playerMoving;
+    private float turnDirection; 
+
+    private CommandProcessor cmdProcessor; 
 
     private void Awake() 
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        cmdProcessor = GetComponent<CommandProcessor>(); 
     } 
 
     private void Update()
     {
-        thrusting = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        playerMoving = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
             turnDirection = 1.0f;
@@ -37,8 +40,9 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        if (thrusting) {
-            rigidbody.AddForce(this.transform.up * this.playerSpeed);
+        if (playerMoving) { 
+            rigidbody.AddForce(this.transform.up * this.playerSpeed);  
+            // cmdProcessor.ExecuteCommand(new MoveCommand(this, this.transform.up, playerSpeed));
         }
 
         if (turnDirection != 0.0f) {

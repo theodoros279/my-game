@@ -17,14 +17,14 @@ public class AchievementAPIManager : MonoBehaviour, IAchievement
 
         for (int i = 0; i < 100; i++) {
             if (score >= points) {
-                StartCoroutine(Pickup());  
+                StartCoroutine(AchievementPanel());   
                 achievementText.text = "You scored " + points + " points!"; 
-                points += 500;   
+                points += 1500;   
             } 
         }
     }
 
-    IEnumerator Pickup() 
+    IEnumerator AchievementPanel() 
     {
         achPanel.SetActive(true); 
 
