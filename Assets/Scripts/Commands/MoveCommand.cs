@@ -5,17 +5,19 @@ using UnityEngine;
 public class MoveCommand : Command
 {
     private Vector3 _direction;
-    private float _distance;
+    private float _speed;
+    IEntity entity;  
 
-    public MoveCommand(IEntity entity, Vector3 direction, float distance): base (entity)
+    public MoveCommand(IEntity entity, Vector3 direction, float speed): base (entity)
     {
+        this.entity = entity;  
         _direction = direction;
-        _distance = distance;
+        _speed = speed; 
     }
 
-    public override void Execute()
+    public override void Execute() 
     {
-        entity.transform.Translate(_distance * _direction);  
+        this.entity.transform.position += _direction * Time.deltaTime * _speed;  
     }
-    
 }
+

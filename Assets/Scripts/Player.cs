@@ -6,25 +6,22 @@ public class Player : MonoBehaviour, IEntity
 {
     public Bullet bulletPrefab;
 
-    public float playerSpeed = 1.2f;
-    public float turnSpeed = 0.3f; 
+    public float playerSpeed = 1.5f;  
+    public float turnSpeed = 0.25f;  
 
     private Rigidbody2D rigidbody;
-    private bool playerMoving;
     private float turnDirection; 
 
-    private CommandProcessor cmdProcessor; 
+    private CommandProcessor cmdProcessor;   
 
     private void Awake() 
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        cmdProcessor = GetComponent<CommandProcessor>(); 
+        cmdProcessor = GetComponent<CommandProcessor>();  
     } 
 
     private void Update()
     {
-        playerMoving = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
-
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
             turnDirection = 1.0f;
         } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
@@ -40,10 +37,9 @@ public class Player : MonoBehaviour, IEntity
 
     private void FixedUpdate() 
     {
-        if (playerMoving) { 
-            rigidbody.AddForce(this.transform.up * this.playerSpeed);  
-            // cmdProcessor.ExecuteCommand(new MoveCommand(this, this.transform.up, playerSpeed));
-        }
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) { 
+            cmdProcessor.ExecuteCommand(new MoveCommand(this, transform.up, this.playerSpeed));        
+        } 
 
         if (turnDirection != 0.0f) {
             rigidbody.AddTorque(turnDirection * this.turnSpeed);

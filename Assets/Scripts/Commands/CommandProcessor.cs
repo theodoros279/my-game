@@ -6,7 +6,7 @@ public class CommandProcessor : MonoBehaviour
 {
     private List<Command> commands = new List<Command>();
     private int currentCommandIndex = -1;
-
+    
     public void ExecuteCommand(Command command)
     {
         commands.Add(command);

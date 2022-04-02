@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 52760054}
   - component: {fileID: 52760053}
   - component: {fileID: 52760052}
+  - component: {fileID: 52760057}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -222,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: -4821356748074763713, guid: 7ddd25b725b2e4f63a8a2514c4ab489e, type: 3}
-  playerSpeed: 1.2
+  playerSpeed: 1.5
   turnSpeed: 0.25
 --- !u!61 &52760053
 BoxCollider2D:
@@ -336,6 +337,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &52760057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52760051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb57d007e8b74bc2a332243b7737e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &116827838
 GameObject:
   m_ObjectHideFlags: 0

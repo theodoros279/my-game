@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Command
+public class Command
 {
     protected IEntity entity;
 
     public Command(IEntity entity)
     {
-        entity = entity; 
+        this.entity = entity;  
     }
 
-    public abstract void Execute();
+    public virtual void Execute(){}  
 }
