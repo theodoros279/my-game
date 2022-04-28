@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         IncreaseDifficulty();  
     }
 
+    // The amount of asteroids are increased every 2000 points scored
     private void IncreaseDifficulty()
     {
         AsteroidSpawner spawner = FindObjectOfType<AsteroidSpawner>();
